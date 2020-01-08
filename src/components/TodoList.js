@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoForm from './TodoForm';
+import Todo from './Todo';
 
 /*
 Task: TodoMVC
@@ -32,7 +33,7 @@ export default class TodoList extends React.Component {
         <TodoForm onSubmit={this.addTodo}/>
         <div>{JSON.stringify(this.state.todos)}</div>
         {this.state.todos.map(todo => (
-          <div key={todo.id}>{todo.text}</div>
+          <Todo key={todo.id} text={todo.text} />
         ))}
       </div>
     );
