@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoForm from './TodoForm';
 
 /*
 Task: TodoMVC
@@ -13,6 +14,10 @@ Task: TodoMVC
 
 export default class TodoList extends React.Component {
   render() {
-    return <div>todos...</div>
+    return (
+      <div>
+        <TodoForm />
+      </div>
+    );
   }
 }
