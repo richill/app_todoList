@@ -27,13 +27,34 @@ export default class TodoList extends React.Component {
     })
   }
 
+  /*updates completed to do action*/
+  toggleComplete = (id) => {
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          return {
+            /*....todo*/
+            id: todo.id,
+            text: todo.text,
+            complete: !todo.complete
+          }
+        } else {
+          return todo;
+        }
+      })
+    })
+  }
+
   render() {
     return (
       <div>
         <TodoForm onSubmit={this.addTodo}/>
         <div>{JSON.stringify(this.state.todos)}</div>
         {this.state.todos.map(todo => (
-          <Todo key={todo.id} text={todo.text} />
+          <Todo 
+            key={todo.id} 
+            toggleComplete={() => this.toggleComplete(todo.id)} 
+            todo={todo}/>
         ))}
       </div>
     );
