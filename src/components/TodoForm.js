@@ -1,4 +1,5 @@
 import React from 'react';
+import shortid from 'shortid';
 
 export default class TodoForm extends React.Component {
   // stores the text that user typed
@@ -17,6 +18,7 @@ export default class TodoForm extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.onSubmit({
+      id: shortid.generate(), // generates a new id that is short
       text: this.state.text,
       complete: false
     })
