@@ -56,6 +56,8 @@ export default class TodoList extends React.Component {
             toggleComplete={() => this.toggleComplete(todo.id)} 
             todo={todo}/>
         ))}
+        {/*goes through the todo list if it matches the fuction it keeps the todos that are not complete*/}
+        <div>todos left: {this.state.todos.filter(todo => !todo.complete).length}</div>
       </div>
     );
   }
