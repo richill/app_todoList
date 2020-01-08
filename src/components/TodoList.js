@@ -14,10 +14,22 @@ Task: TodoMVC
 */
 
 export default class TodoList extends React.Component {
+  /*the array/list of todos*/
+  state = {
+    todos:[]
+  };
+
+  /*creates a copy of the todos and adds a new one to the beginning*/
+  addTodo = (todo) => {
+    this.setState({
+      todos: [todo, ...this.state.todos]
+    })
+  }
+
   render() {
     return (
       <div>
-        <TodoForm />
+        <TodoForm onSubmit={this.addTodo}/>
       </div>
     );
   }
