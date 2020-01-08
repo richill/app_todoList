@@ -10,6 +10,7 @@ Task: TodoMVC
 5. filter all/active/complete
 6. delete all complete
 8. button to toggle all on/off
+9. push code to heroku
 */
 
 export default class TodoList extends React.Component {
