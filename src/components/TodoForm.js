@@ -21,6 +21,9 @@ export default class TodoForm extends React.Component {
       id: shortid.generate(), // generates a new id that is short
       text: this.state.text,
       complete: false
+    });
+    this.setState({
+      text: "" //clears input field after submit
     })
   }
 
@@ -32,6 +35,7 @@ export default class TodoForm extends React.Component {
           value={this.state.text} 
           onChange={this.handleChange}
           placeholder="todo..."/>
+          <button onClick={this.handleChange}>add to do </button>    
       </form>
     );
   }
