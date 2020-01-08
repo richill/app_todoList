@@ -17,7 +17,8 @@ Task: TodoMVC
 export default class TodoList extends React.Component {
   /*the array/list of todos*/
   state = {
-    todos:[]
+    todos:[],
+    todoToShow: "all" // keeps the value of what i want to show
   };
 
   /*creates a copy of the todos and adds a new one to the beginning*/
@@ -45,19 +46,42 @@ export default class TodoList extends React.Component {
     })
   }
 
+  /*updates the todos displayed depending on clicked button 'all' 'active' 'complete'*/
+  updateTodoToShow = (s) => {
+    this.setState({
+      todoToShow: s
+    })
+  }
+
   render() {
+    let todos = [];
+
+    if (this.state.todoToShow === 'all') {
+      todos = this.state.todos;
+    } else if (this.state.todoToShow === 'active') {
+      todos = this.state.todos.filter(todo => !todo.complete);
+    } else if (this.state.todoToShow === 'complete') {
+      todos = this.state.todos.filter(todo => todo.complete);
+    }
+
     return (
       <div>
         <TodoForm onSubmit={this.addTodo}/>
-        <div>{JSON.stringify(this.state.todos)}</div>
-        {this.state.todos.map(todo => (
+        <div className="hide">{JSON.stringify(this.state.todos)}</div>
+        {todos.map(todo => (
           <Todo 
             key={todo.id} 
             toggleComplete={() => this.toggleComplete(todo.id)} 
             todo={todo}/>
         ))}
+
         {/*goes through the todo list if it matches the fuction it keeps the todos that are not complete*/}
         <div>todos left: {this.state.todos.filter(todo => !todo.complete).length}</div>
+        <div>
+          <button onClick={() => this.updateTodoToShow("all")}>all</button>
+          <button onClick={() => this.updateTodoToShow("active")}>active</button>
+          <button onClick={() => this.updateTodoToShow("complete")}>complete</button>
+        </div>
       </div>
     );
   }
