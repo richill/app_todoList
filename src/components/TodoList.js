@@ -10,8 +10,7 @@ Task: TodoMVC
 4. show number of active todos
 5. filter all/active/complete
 6. delete all complete
-8. button to toggle all on/off
-9. push code to heroku
+8. push code to heroku
 */
 
 export default class TodoList extends React.Component {
@@ -53,6 +52,12 @@ export default class TodoList extends React.Component {
     })
   }
 
+  handleDeleteTodo = id => {
+    this.setState({
+      todos: this.state.todos.filter(todo => todo.id !== id)
+    });
+  }
+
   render() {
     let todos = [];
 
@@ -72,6 +77,7 @@ export default class TodoList extends React.Component {
           <Todo 
             key={todo.id} 
             toggleComplete={() => this.toggleComplete(todo.id)} 
+            onDelete={() => this.handleDeleteTodo(todo.id)}
             todo={todo}/>
         ))}
 
