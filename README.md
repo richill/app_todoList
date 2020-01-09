@@ -9,7 +9,7 @@ A simplified todo list App built in react.
 3. cross off todos [click item to cross it off]
 4. show number of active todos
 5. filter all/active/complete
-6. delete all complete
+6. delete a todo item [click delete icon]
 
 
 ## Website

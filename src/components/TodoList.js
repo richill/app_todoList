@@ -9,7 +9,7 @@ Task: TodoMVC
 3. cross off todos
 4. show number of active todos
 5. filter all/active/complete
-6. delete all complete
+6. delete button on to item
 8. push code to heroku
 */
 
